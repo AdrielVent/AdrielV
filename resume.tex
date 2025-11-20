@@ -1,89 +1,68 @@
-\documentclass[10pt,letterpaper]{article}
+\documentclass{resume}
 
-%========= PACKAGES =========%
-\usepackage[margin=0.5in]{geometry}
-\usepackage{titlesec}
-\usepackage{enumitem}
-\usepackage{parskip}
-\usepackage[colorlinks=true,linkcolor=black,urlcolor=black]{hyperref}
-\usepackage{fontspec}
-\setmainfont{Arial}
+\name{Adriel Ventura}
+\address{Central Islip, NY \mid 516-996-2383 \mid \href{mailto:AdrielVent5@gmail.com}{AdrielVent5@gmail.com} \mid \href{https://www.linkedin.com/in/adrielventura}{linkedin.com/in/adrielventura}}
 
-%========= FORMATTING =========%
-\pagenumbering{gobble}
-\setlength{\parindent}{0pt}
-\setlist[itemize]{leftmargin=1.2em,noitemsep,topsep=0pt}
-\titleformat{\section}{\bfseries\Large\uppercase}{\thesection}{0.6em}{}[\titlerule]
-\titlespacing*{\section}{0pt}{0.5em}{0.35em}
-
-%========= DOCUMENT =========%
 \begin{document}
+\printheader
 
-\begin{center}
-{\LARGE \textbf{ADRIEL VENTURA}}\\[-2pt]
-Central Islip, NY $\mid$ 516-996-2383 $\mid$ \href{mailto:AdrielVent5@gmail.com}{AdrielVent5@gmail.com} $\mid$ \href{https://www.linkedin.com/in/adrielventura}{linkedin.com/in/adrielventura}
-\end{center}
+%------------------------ Summary ------------------------
+\begin{rSection}{Professional Summary}
+Results-driven Mechanical Engineering undergraduate (Hofstra University, Dec 2027) proficient in Siemens NX, GD\&T (ASME Y14.5), and structural analysis. Combines coursework in statics and kinematics with hands-on construction and rapid prototyping experience. Proven leadership as CSTEP President with ability to manage projects from concept through fabrication. Seeking a \textbf{Spring 2026 Co-op} in aerospace, automotive, or manufacturing engineering.
+\end{rSection}
 
-\vspace{-4pt}
-\section*{Professional Summary}
-Results-driven Mechanical Engineering undergraduate (Hofstra University, Dec 2027) with proficiency in Siemens NX, GD\&T (ASME Y14.5), and structural analysis. Combines coursework in statics and kinematics with hands-on construction and rapid prototyping experience. Proven leadership as CSTEP President with ability to manage projects from concept through fabrication. Seeking a \textbf{Spring 2026 Co-op} in aerospace, automotive, or manufacturing engineering.
+%------------------------ Education ------------------------
+\begin{rSection}{Education}
+{\bf Bachelor of Science in Mechanical Engineering} \hfill {Expected Dec 2027}\\
+Hofstra University, Hempstead, NY\\
+Honors: Rabinowitz Honors College; Provost Scholar Award (Academic Excellence \& Leadership)\\
+Relevant Coursework: Computer-Aided Design (CAD), Engineering Statics, Python for Engineers, Structural Analysis, Manufacturing Processes, Engineering Graphics
+\end{rSection}
 
-\vspace{-4pt}
-\section*{Education}
-\textbf{Bachelor of Science in Mechanical Engineering} \hfill Hofstra University, Hempstead NY\\[-4pt]
-\textit{Expected Graduation: Dec 2027}\\[-6pt]
-\textbf{Honors:} Rabinowitz Honors College; Provost Scholar Award (Academic Excellence \& Leadership)\\[-6pt]
-\textbf{Relevant Coursework:} Computer-Aided Design (CAD), Engineering Statics, Python for Engineers, Structural Analysis, Manufacturing Processes, Engineering Graphics
+%------------------------ Skills ------------------------
+\begin{rSection}{Technical Skills}
+{\bf CAD \& Design:} Siemens NX (Advanced Modeling, Assemblies, Drafting), AutoCAD, GD\&T (ASME Y14.5), Bill of Materials (BOM), Design for Manufacturing (DFM)\\
+{\bf Analysis \& Simulation:} MATLAB (Data Analysis), Python (NumPy, Matplotlib, Kinematic Simulation), Static Force Analysis, Free-Body Diagrams\\
+{\bf Fabrication \& Prototyping:} Additive Manufacturing (FDM \& Resin 3D Printing), Rapid Prototyping, Woodworking, Structural Framing, Blueprint Reading, Power Tools, Metrology\\
+{\bf Software:} Microsoft Office Specialist (Excel Certified)
+\end{rSection}
 
-\vspace{-4pt}
-\section*{Technical Skills}
-\textbf{CAD \& Design:} Siemens NX (Advanced Modeling, Assemblies, Drafting), AutoCAD, GD\&T (ASME Y14.5), Bill of Materials (BOM), Design for Manufacturing (DFM)\\[-4pt]
-\textbf{Analysis \& Simulation:} MATLAB (Data Analysis), Python (NumPy, Matplotlib, Kinematic Simulation), Static Force Analysis, Free-Body Diagrams\\[-4pt]
-\textbf{Fabrication \& Prototyping:} Additive Manufacturing (FDM \& Resin 3D Printing), Rapid Prototyping, Woodworking, Structural Framing, Blueprint Reading, Power Tools, Metrology\\[-4pt]
-\textbf{Software:} Microsoft Office Specialist (Excel Certified)
+%------------------------ Projects ------------------------
+\begin{rSection}{Academic Engineering Projects}
+  \begin{rSubsection}{Multi-Component Mechanical Clamp Design}{Jan 2024 -- Dec 2024}{Siemens NX \& GD\&T}{}
+    \item Engineered a 15-part mechanical clamp assembly in Siemens NX from concept sketches to parametric 3D models.
+    \item Produced manufacturing-ready drawings with GD\&T callouts per ASME Y14.5 and ran interference checks to resolve design flaws.
+    \item Created BOM and exploded views to support assembly instructions and manufacturing planning.
+  \end{rSubsection}
+  \begin{rSubsection}{Cantilevered Truss Structural Analysis}{Sept 2024 -- Dec 2024}{Statics \& MATLAB}{}
+    \item Analyzed axial forces for a 10-member cantilever truss using Method of Joints and Free-Body Diagrams to verify static equilibrium.
+    \item Validated manual calculations against MATLAB simulations, achieving a 95\% match in predicted forces.
+  \end{rSubsection}
+  \begin{rSubsection}{Ballistic Trajectory Simulation}{Jan 2024 -- May 2024}{Python (NumPy, Matplotlib)}{}
+    \item Developed a projectile-motion simulation script with variable launch conditions and gravity to study range and flight path.
+    \item Utilized NumPy for vector math and Matplotlib for visualization to iterate rapidly on input parameters.
+  \end{rSubsection}
+\end{rSection}
 
-\vspace{-4pt}
-\section*{Academic Engineering Projects}
-\textbf{Multi-Component Mechanical Clamp Design} \hfill Siemens NX \& GD\&T $\mid$ Jan 2024 -- Dec 2024
-\begin{itemize}
-  \item Engineered a 15-part mechanical clamp assembly in Siemens NX from concept sketches to parametric 3D models.
-  \item Produced manufacturing-ready drawings with GD\&T callouts per ASME Y14.5 and ran interference checks to resolve design flaws.
-  \item Created BOM and exploded views to support assembly instructions and manufacturing planning.
-\end{itemize}
+%------------------------ Experience ------------------------
+\begin{rSection}{Independent Construction \& Fabrication Experience}
+  \begin{rSubsection}{Residential Structural Renovation \& Extension}{Jan 2024 -- May 2024}{Central Islip, NY}{}
+    \item Executed demolition and framed new stud walls for a residential extension, aligning top/bottom plates and studs to architectural layouts.
+    \item Installed sheathing and framed openings while accounting for load paths and dimensional tolerances.
+  \end{rSubsection}
+  \begin{rSubsection}{Timber Deck Construction}{Jun 2023 -- Aug 2023}{Central Islip, NY}{}
+    \item Constructed a pressure-treated deck from footings to finish, calculating material requirements and ensuring geometric alignment.
+    \item Installed concrete footings and structural posts with precise leveling to maintain deck stability and durability.
+  \end{rSubsection}
+\end{rSection}
 
-\textbf{Cantilevered Truss Structural Analysis} \hfill Statics \& MATLAB $\mid$ Sept 2024 -- Dec 2024
-\begin{itemize}
-  \item Analyzed axial forces for a 10-member cantilever truss using Method of Joints and Free-Body Diagrams to verify static equilibrium.
-  \item Validated manual calculations against MATLAB simulations, achieving a 95\% match in predicted forces.
-\end{itemize}
-
-\textbf{Ballistic Trajectory Simulation} \hfill Python (NumPy, Matplotlib) $\mid$ Jan 2024 -- May 2024
-\begin{itemize}
-  \item Developed a projectile-motion simulation script with variable launch conditions and gravity to study range and flight path.
-  \item Utilized NumPy for vector math and Matplotlib for visualization to iterate rapidly on input parameters.
-\end{itemize}
-
-\vspace{-4pt}
-\section*{Independent Construction \& Fabrication Experience}
-\textbf{Residential Structural Renovation \& Extension} \hfill Central Islip, NY $\mid$ Jan 2024 -- May 2024
-\begin{itemize}
-  \item Executed demolition and framed new stud walls for a residential extension, aligning top/bottom plates and studs to architectural layouts.
-  \item Installed sheathing and framed openings while accounting for load paths and dimensional tolerances.
-\end{itemize}
-
-\textbf{Timber Deck Construction} \hfill Central Islip, NY $\mid$ Jun 2023 -- Aug 2023
-\begin{itemize}
-  \item Constructed a pressure-treated deck from footings to finish, calculating material requirements and ensuring geometric alignment.
-  \item Installed concrete footings and structural posts with precise leveling to maintain deck stability and durability.
-\end{itemize}
-
-\vspace{-4pt}
-\section*{Leadership \& Affiliations}
-\textbf{President / Vice President, Collegiate Science \& Technology Entry Program (CSTEP)} \hfill Sept 2024 -- Present
-\begin{itemize}
-  \item Lead professional development workshops and peer mentorship initiatives for engineering students.
-  \item Coordinate career readiness events and academic support programs for underrepresented STEM students.
-\end{itemize}
-\textbf{Member:} American Society of Mechanical Engineers (ASME)
+%------------------------ Leadership ------------------------
+\begin{rSection}{Leadership \& Affiliations}
+  \begin{rSubsection}{Collegiate Science \& Technology Entry Program (CSTEP)}{Sept 2024 -- Present}{President / Vice President}{}
+    \item Lead professional development workshops and peer mentorship initiatives for engineering students.
+    \item Coordinate career readiness events and academic support programs for underrepresented STEM students.
+  \end{rSubsection}
+  \textbf{Member:} American Society of Mechanical Engineers (ASME)
+\end{rSection}
 
 \end{document}
