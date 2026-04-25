@@ -1,0 +1,17 @@
+parameter,value,units,notes
+base_length,0.0508,m,50.8 mm
+base_width,0.0508,m,50.8 mm
+base_thickness,0.003,m,3.0 mm
+num_fins,17,count,plate fins
+fin_height,0.025,m,25.0 mm
+fin_thickness,0.001,m,1.0 mm
+fin_span_length,0.0508,m,50.8 mm
+fin_spacing,0.002112,m,2.112 mm
+fin_efficiency,0.881978,-,dimensionless
+A_eff,0.039801,m^2,effective convection area
+R_total,0.405127,C/W,total thermal resistance
+T_chip,65.512732,C,chip temperature at 100 W and 25 C ambient
+mass,0.079196,kg,estimated aluminum mass
+temp_margin_below_70C,4.487268,C,70 - T_chip
+temp_margin_below_85C,19.487268,C,85 - T_chip
+resistance_margin_below_0.45C_per_W,0.044873,C/W,0.45 - R_total
