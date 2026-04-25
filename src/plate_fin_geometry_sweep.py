@@ -43,9 +43,13 @@ FIN_THICKNESS_VALUES_M = [0.001 + 0.0005 * i for i in range(5)]  # 0.001..0.003
 BASE_THICKNESS_VALUES_M = [0.003 + 0.001 * i for i in range(4)]  # 0.003..0.006
 
 
-def _is_physically_packable(num_fins: int, fin_thickness_m: float, base_width_m: float) -> bool:
-    """Basic manufacturability screen: total fin footprint must fit base width."""
-    return num_fins * fin_thickness_m < base_width_m
+def _fin_spacing_m(num_fins: int, fin_thickness_m: float, base_width_m: float) -> float | None:
+    """Return fin spacing for a plate-fin array, or None if invalid."""
+    if num_fins <= 1:
+        return None
+    if num_fins * fin_thickness_m >= base_width_m:
+        return None
+    return (base_width_m - num_fins * fin_thickness_m) / (num_fins - 1)
 
 
 def run_sweep() -> list[dict[str, float | int | bool]]:
@@ -59,7 +63,10 @@ def run_sweep() -> list[dict[str, float | int | bool]]:
     for num_fins in NUM_FINS_RANGE:
         for fin_height_m in FIN_HEIGHT_VALUES_M:
             for fin_thickness_m in FIN_THICKNESS_VALUES_M:
-                if not _is_physically_packable(num_fins, fin_thickness_m, BASE_WIDTH_M):
+                spacing_m = _fin_spacing_m(num_fins, fin_thickness_m, BASE_WIDTH_M)
+                if spacing_m is None:
+                    continue
+                if spacing_m < 0.002:
                     continue
 
                 for base_thickness_m in BASE_THICKNESS_VALUES_M:
@@ -99,6 +106,7 @@ def run_sweep() -> list[dict[str, float | int | bool]]:
                             "fin_height_m": fin_height_m,
                             "fin_thickness_m": fin_thickness_m,
                             "base_thickness_m": base_thickness_m,
+                            "spacing_m": spacing_m,
                             "h_W_per_m2K": H_W_PER_M2K,
                             "eta_fin": eta_fin,
                             "base_exposed_area_m2": base_exposed_area_m2,
@@ -126,6 +134,7 @@ def write_csv(rows: list[dict[str, float | int | bool]]) -> Path:
         "fin_height_m",
         "fin_thickness_m",
         "base_thickness_m",
+        "spacing_m",
         "h_W_per_m2K",
         "eta_fin",
         "base_exposed_area_m2",
@@ -164,6 +173,7 @@ def write_passing_csv(rows: list[dict[str, float | int | bool]]) -> Path:
         "fin_height_m",
         "fin_thickness_m",
         "base_thickness_m",
+        "spacing_m",
         "h_W_per_m2K",
         "eta_fin",
         "base_exposed_area_m2",
@@ -205,12 +215,13 @@ def print_summary(rows: list[dict[str, float | int | bool]]) -> None:
     top = sorted(rows, key=lambda r: float(r["R_total_K_per_W"]))[:10]
     print("\nTop 10 lowest R_total candidates:")
     print(
-        f"{'fins':>4} {'h_fin(m)':>8} {'t_fin(m)':>8} {'t_base(m)':>9} {'A_eff':>8} "
+        f"{'fins':>4} {'spacing':>8} {'h_fin(m)':>8} {'t_fin(m)':>8} {'t_base(m)':>9} {'A_eff':>8} "
         f"{'R_total':>8} {'T_chip':>8} {'R<=0.45':>8} {'T<=70':>6} {'T<=85':>6}"
     )
     for r in top:
         print(
             f"{int(r['num_fins']):4d} "
+            f"{float(r['spacing_m']):8.4f} "
             f"{float(r['fin_height_m']):8.3f} "
             f"{float(r['fin_thickness_m']):8.4f} "
             f"{float(r['base_thickness_m']):9.4f} "
