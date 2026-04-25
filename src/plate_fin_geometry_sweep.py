@@ -148,6 +148,44 @@ def write_csv(rows: list[dict[str, float | int | bool]]) -> Path:
     return out_path
 
 
+def write_passing_csv(rows: list[dict[str, float | int | bool]]) -> Path:
+    """Write only geometries that pass all criteria."""
+    out_path = Path("outputs/tables/plate_fin_passing_geometries.csv")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+
+    passing_rows = [
+        r
+        for r in rows
+        if bool(r["Pass_R_total"]) and bool(r["Pass_derated_70C"]) and bool(r["Pass_failure_85C"])
+    ]
+
+    fieldnames = [
+        "num_fins",
+        "fin_height_m",
+        "fin_thickness_m",
+        "base_thickness_m",
+        "h_W_per_m2K",
+        "eta_fin",
+        "base_exposed_area_m2",
+        "A_eff_m2",
+        "R_base_K_per_W",
+        "R_contact_K_per_W",
+        "R_conv_K_per_W",
+        "R_total_K_per_W",
+        "T_chip_C",
+        "Pass_R_total",
+        "Pass_derated_70C",
+        "Pass_failure_85C",
+    ]
+
+    with out_path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(passing_rows)
+
+    return out_path
+
+
 def print_summary(rows: list[dict[str, float | int | bool]]) -> None:
     print("Plate-fin geometry sweep (preliminary; not final design)")
     print(
@@ -188,5 +226,7 @@ def print_summary(rows: list[dict[str, float | int | bool]]) -> None:
 if __name__ == "__main__":
     result_rows = run_sweep()
     csv_path = write_csv(result_rows)
+    passing_csv_path = write_passing_csv(result_rows)
     print_summary(result_rows)
     print(f"\nWrote CSV: {csv_path}")
+    print(f"Wrote passing CSV: {passing_csv_path}")
